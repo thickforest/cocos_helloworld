@@ -67,11 +67,6 @@ cc.Class({
 		this.score = 0;
 		var self = this;
 		this.node.on(cc.Node.EventType.TOUCH_START, function (event){
-			cc.log(event);
-			cc.log(self.player);
-			cc.log(self.node);
-			cc.log(event.touch._point.x + "," + self.node.width/2);
-			cc.log(self.player.getComponent('Player'));
 			if (event.touch._point.x > self.node.width/2)
 			{
 				self.player.getComponent('Player').accLeft = false;
@@ -121,7 +116,7 @@ cc.Class({
 		
 	gameOver: function() {
 		this.player.stopAllActions(); //停止 player 节点的跳跃动作
-        cc.director.loadScene('Game');
+        cc.director.loadScene('Menu');
 	},
 
     update (dt) {

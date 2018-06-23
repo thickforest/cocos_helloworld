@@ -34,6 +34,10 @@ cc.Class({
 		jumpAudio: {
 			default: null,
 			url: cc.AudioClip
+		},
+		game: {
+			default: null,
+			type: cc.Node
 		}
     },
 
@@ -67,6 +71,14 @@ cc.Class({
 
         // 根据当前速度更新主角的位置
         this.node.x += this.xSpeed * dt;
+
+		cc.log(this.node.x + ',' + this.game.width);
+		if (this.node.x > this.game.width/2 || this.node.x < -this.game.width/2)
+		{
+			this.xSpeed *= -1;
+			this.accLeft = !this.accLeft;
+			this.accRight = !this.accRight;
+		}
 	},
 
 	playJumpAudio: function () {
